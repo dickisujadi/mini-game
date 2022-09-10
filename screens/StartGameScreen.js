@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import Colors from "../constants/Colors";
 
 function StartGameScreen({onConfirmNumber}) {
     const [enteredNumber, setEnteredNumber] = useState('')
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         marginTop: 100,
         padding: 16,
         marginHorizontal: 24,
-        backgroundColor: '#72063c',
+        backgroundColor: Colors.primary500,
         borderRadius: 8,
         elevation: 4, // add shadow on android
         shadowColor: 'black', // add shadow on ios
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         fontSize: 32,
-        borderBottomColor: '#ddb52f',
+        borderBottomColor: Colors.accent500,
         borderBottomWidth: 2,
-        color: '#ddb52f',
+        color: Colors.accent500,
         fontWeight: 'bold',
         marginVertical: 8,
         textAlign: 'center',
