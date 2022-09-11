@@ -2,21 +2,32 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, ImageBackground, SafeAreaView } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient'
 import StartGameScreen from './screens/StartGameScreen';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GameScreeen from './screens/GameScreen';
 import Colors from './constants/Colors';
+import GameOverScreen from './screens/GameOverScreen';
 
 export default function App() {
   const [pickedNumber, setPickedNumber] = useState(null)
+  const [isGameOver, setIsGameOver] = useState(true)
 
   function pickedNumberHandler(confirmedNumber) {
     setPickedNumber(confirmedNumber)
+    setIsGameOver(false)
+  }
+  
+  function gameOverHandler() {
+    setIsGameOver(true)
   }
 
   let screen = <StartGameScreen onConfirmNumber={pickedNumberHandler} />
 
   if(pickedNumber) {
-    screen = <GameScreeen userNumber={pickedNumber}/>
+    screen = <GameScreeen userNumber={pickedNumber} onGameOver={gameOverHandler}/>
+  }
+
+  if(isGameOver && pickedNumber) {
+    screen = <GameOverScreen />
   }
 
   return (
