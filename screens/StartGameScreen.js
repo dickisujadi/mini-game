@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
+import { TextInput, View, StyleSheet, Alert } from "react-native";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import Colors from "../constants/Colors";
@@ -32,8 +34,8 @@ function StartGameScreen({onConfirmNumber}) {
 
     return <View style={styles.rootContainer}>
         <Title>Guess My Number</Title>
-        <View style={styles.inputContainer}>
-            <Text style={styles.instructionText}>Enter a Number</Text>
+        <Card>
+            <InstructionText>Enter a Number</InstructionText>
             <TextInput 
                 style={styles.numberInput} 
                 maxLength={2} 
@@ -51,7 +53,7 @@ function StartGameScreen({onConfirmNumber}) {
                     <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
                 </View>
             </View>
-        </View>
+        </Card>
     </View>
 }
 
@@ -62,24 +64,6 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 100,
         alignItems: 'center'
-    },
-    instructionText : {
-        color: Colors.accent500,
-        fontSize: 24
-    },
-    inputContainer: {
-        // justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 100,
-        padding: 16,
-        marginHorizontal: 24,
-        backgroundColor: Colors.primary500,
-        borderRadius: 8,
-        elevation: 4, // add shadow on android
-        shadowColor: 'black', // add shadow on ios
-        shadowOffset: { width: 0, height: 2 }, // add shadow on ios
-        shadowRadius: 6, // add shadow on ios
-        shadowOpacity: 0.25, // add shadow on ios
     },
     numberInput: {
         height: 50,
